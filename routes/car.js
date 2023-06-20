@@ -28,16 +28,16 @@ router.get('/list', carController.carList);
 router.get('/details/:id', carController.details);
 
 // Routers for edit
-router.get('/edit/:id', requireAuth,carController.displayEditPage);
-router.post('/edit/:id', requireAuth,carController.processEditPage);
+router.get('/edit/:id', carController.displayEditPage);
+router.post('/edit/:id', carController.processEditPage);
 
 // Delete
-router.get('/delete/:id', requireAuth,carController.performDelete);
+router.get('/delete/:id', carController.performDelete);
 
 /* GET Route for displaying the Add page - CREATE Operation */
-router.get('/add', requireAuth, carController.displayAddPage);
+router.get('/add', carController.displayAddPage);
 
 /* POST Route for processing the Add page - CREATE Operation */
-router.post('/add',requireAuth, carController.processAddPage , );
+router.post('/add', carController.processAddPage , );
 
 module.exports = router;
