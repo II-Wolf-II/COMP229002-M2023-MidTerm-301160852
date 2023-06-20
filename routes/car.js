@@ -6,12 +6,21 @@ let carController = require('../controllers/car');
 // Helper function for guard purposes
 function requireAuth(req, res, next)
 {
-    // check if the user is logged in
-    
-    // ADD YOUR CODE HERE        
+    // checks if the user is logged in
+    // ADD YOUR CODE HERE  
+    if (req.isAuthenticated()==false){
+    }
+    if (req.isAuthenticated()==true) {
+     // req.user is available for use here
+        return next(); 
+        
+    }
+    console.log(req.originalUrl)
 
-}
-
+      // if user denied. redirect to login
+       res.redirect('/users/signin')
+ 
+} 
 /* GET list of items */
 router.get('/list', carController.carList);
 
@@ -29,6 +38,6 @@ router.get('/delete/:id', carController.performDelete);
 router.get('/add', carController.displayAddPage);
 
 /* POST Route for processing the Add page - CREATE Operation */
-router.post('/add', carController.processAddPage);
+router.post('/add', carController.processAddPage , );
 
 module.exports = router;
